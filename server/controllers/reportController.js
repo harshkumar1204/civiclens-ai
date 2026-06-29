@@ -78,7 +78,11 @@ Return only JSON.
         },
       ],
     });
-    let text = response.text;
+    const text = response.text;
+
+console.log("========== GEMINI RAW RESPONSE ==========");
+console.log(text);
+console.log("=========================================");
 
 text = text
   .replace(/```json/g, "")
