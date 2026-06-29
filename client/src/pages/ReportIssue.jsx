@@ -64,9 +64,9 @@ function ReportIssue() {
       formData.append("image", file);
 
       const res = await axios.post(
-        "http://localhost:5000/analyze-image",
-        formData
-      );
+  "https://civiclens-ai-bkby.onrender.com/analyze-image",
+  formData
+);
 
       setImageUrl(res.data.imageUrl);
 
