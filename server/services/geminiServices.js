@@ -6,7 +6,7 @@ const ai = new GoogleGenAI({
 
 export async function analyzeWithGemini(base64Image, mimeType) {
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-2.0-flash",
     contents: [
       {
         text: `
@@ -55,5 +55,11 @@ Return only JSON.
     .replace(/```/g, "")
     .trim();
 
+  try {
   return JSON.parse(text);
+} catch (err) {
+  console.error("Gemini returned invalid JSON:");
+  console.log(text);
+  throw new Error("Gemini returned invalid JSON");
+}
 }
